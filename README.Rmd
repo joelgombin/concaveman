@@ -1,0 +1,61 @@
+---
+title: "Concaveman"
+author: "Joel Gombin"
+date: "2 mai 2017"
+output: github_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+##  concaveman
+
+A very fast 2D concave hull algorithm [in JavaScript by Vladimir Agafonkin](https://github.com/mapbox/concaveman), wrapped in R (generates a general outline of a point set).
+
+```{r example}
+library(concaveman)
+library(tmap)
+data(points)
+points$k <- as.factor(points$k)
+polygons <- concaveman(points, by = k)
+tm_shape(points) +
+ tm_dots(col = "k", size = 0.1, legend.show = FALSE) +
+tm_shape(polygons) +
+ tm_fill(col = "k", alpha = 0.5, legend.show = FALSE) +
+ tm_borders() +
+tm_layout(frame = FALSE)
+
+```
+
+### Installation
+
+For now, `concaveman` can only be installed from github:
+
+
+```{r install, echo = TRUE, eval = FALSE}
+devtools::install_github("joelgombin/concaveman")
+```
+
+### Usage
+
+```{r usage}
+data(points)
+points$k <- as.factor(points$k)
+polygons <- concaveman(points, by = k)
+polygons
+
+```
+
+Signature: `concaveman(points, by = NULL, concavity = 2, lengthThreshold = 0)`
+
+- `points` is an `sf` object.
+- `by` is the (unquoted, tidyverse-style) name of the variable defining the subsets of points for which concave hull polygons should be computed. If `NULL` (the default), only one polygon is computed for the whole set of points.
+- concavity is a relative measure of concavity. 1 results in a relatively detailed shape, Infinity results in a convex hull. You can use values lower than 1, but they can produce pretty crazy shapes.
+- lengthThreshold: when a segment length is under this threshold, it stops being considered for further detalization. Higher values result in simpler shapes.
+
+### Algorithm 
+
+The algorithm is based on ideas from the paper [A New Concave Hull Algorithm and Concaveness Measure for n-dimensional Datasets, 2012](http://www.iis.sinica.edu.tw/page/jise/2012/201205_10.pdf) by Jin-Seo Park and Se-Jong Oh.
+
+This implementation by Vladimir Agafonkin dramatically improves performance over the one stated in the paper (`O(rn)`, where `r` is a number of output points, to `O(n log n)`) by introducing a fast *k nearest points to a segment* algorithm, a modification of a depth-first kNN R-tree search using a priority queue.
