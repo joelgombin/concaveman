@@ -18,5 +18,5 @@ Imports: V8,
          dplyr (> 0.5), 
          jsonlite, 
          rlang
-Suggests: ggplot2 (> 2.2.1)
+Suggests: tmap (>= 1.8)
 RoxygenNote: 6.0.1
