@@ -8,9 +8,6 @@ concaveman
 
 A very fast 2D concave hull algorithm [in JavaScript by Vladimir Agafonkin](https://github.com/mapbox/concaveman), wrapped in R (generates a general outline of a point set).
 
-    ## Warning in st_sf(x, ..., agr = agr): more than one geometry column: taking
-    ## `polygons'; use `sf_column_name=' to specify a different column.
-
 ![](README_files/figure-markdown_github/example-1.png)
 
 ### Installation

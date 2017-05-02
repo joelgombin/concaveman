@@ -13,7 +13,7 @@ knitr::opts_chunk$set(echo = FALSE)
 
 A very fast 2D concave hull algorithm [in JavaScript by Vladimir Agafonkin](https://github.com/mapbox/concaveman), wrapped in R (generates a general outline of a point set).
 
-```{r example}
+```{r example, warning=FALSE}
 library(concaveman)
 library(tmap)
 data(points)
