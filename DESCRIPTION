@@ -4,6 +4,7 @@ Title: A Very Fast 2D Concave Hull Algorithm
 Version: 0.0.0.9000
 Authors@R: c(
   person("Joël", "Gombin", email="joel.gombin@gmail.com", role = c("cre", "aut")), 
+  person("Ramnath", "Vaidyanathan", role = "aut"),
   person("Vladimir", "Agafonkin", role = "aut"),
   person("Mapbox", role = "cph")
   )
