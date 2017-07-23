@@ -3,3 +3,4 @@
 export(concaveman)
 import(sf)
 importFrom(magrittr,"%>%")
+importFrom(rlang,.data)

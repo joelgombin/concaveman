@@ -25,12 +25,9 @@ The \code{concaveman} function ports the \href{https://github.com/mapbox/concave
 For details regarding the implementation, please see the original javascript library \href{https://github.com/mapbox/concaveman}{github page}. This is just a thin wrapper, via \href{https://cran.r-project.org/web/packages/V8/}{V8}. I only have introduced some sort of vectorisation: using the \code{by} argument, you can compute the polygons for a number of subsets of points.
 }
 \examples{
-library(tmap)
 data(points)
 polygons <- concaveman(points, k)
-tm_shape(points) +
- tm_dots(col = "k", size = 0.1, legend.show = FALSE) +
-tm_shape(polygons) +
- tm_fill(col = "k", alpha = 0.5, legend.show = FALSE)
+plot(points)
+plot(polygons, add = TRUE)
 
 }

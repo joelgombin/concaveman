@@ -11,17 +11,15 @@
 #'
 #' @return an `sf` object holding the polygon(s) and, if there is one, the `by` column.
 #' @examples
-#' library(tmap)
 #' data(points)
 #' polygons <- concaveman(points, k)
-#' tm_shape(points) +
-#'  tm_dots(col = "k", size = 0.1, legend.show = FALSE) +
-#' tm_shape(polygons) +
-#'  tm_fill(col = "k", alpha = 0.5, legend.show = FALSE)
+#' plot(points)
+#' plot(polygons, add = TRUE)
 #'
 #' @export
 #' @import sf
 #' @importFrom magrittr "%>%"
+#' @importFrom rlang .data
 
 
 
@@ -52,9 +50,9 @@ concaveman <- function(points, by = NULL, concavity = 2, length_threshold = 0) {
   if (!is.null(rlang::quo_expr(by))) {
     points %>%
       dplyr::group_by(rlang::UQ(by)) %>%
-      dplyr::summarise(polygons = workhorse(geometry, concavity, length_threshold))
+      dplyr::summarise(polygons = workhorse(.data$geometry, concavity, length_threshold))
   } else {
     points %>%
-      dplyr::summarise(polygons = workhorse(., concavity, length_threshold))
+      dplyr::summarise(polygons = workhorse(.data$geometry, concavity, length_threshold))
   }
 }

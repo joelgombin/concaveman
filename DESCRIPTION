@@ -13,10 +13,11 @@ License: GPL-3
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
+Depends: R (>= 2.10)
 Imports: V8, 
          sf, 
-         dplyr (> 0.5), 
-         jsonlite, 
+         magrittr,
+         dplyr (>= 0.7),
+         jsonlite,
          rlang
-Suggests: tmap (>= 1.8)
 RoxygenNote: 6.0.1
