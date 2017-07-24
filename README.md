@@ -79,7 +79,7 @@ tm_layout(frame = FALSE)
 
 ![](README-usage-1.png)
 
-Signature: `concaveman(points, by = NULL, concavity = 2, lengthThreshold = 0)`
+Signature: `concaveman(points, concavity = 2, lengthThreshold = 0)`
 
 -   `points` Can be represented as a matrix of coordinates, an `sf` object or a `SpatialPoints*` object.
 -   `concavity` is a relative measure of concavity. 1 results in a relatively detailed shape, Infinity results in a convex hull. You can use values lower than 1, but they can produce pretty crazy shapes.
