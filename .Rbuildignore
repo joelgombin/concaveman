@@ -1,3 +1,6 @@
 ^.*\.Rproj$
 ^\.Rproj\.user$
 ^data-raw$
+^README\.Rmd$
+^exemple\.R$
+^test\.csv$

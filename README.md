@@ -1,10 +1,39 @@
-
+<!-- README.md is generated from README.Rmd. Please edit that file -->
 concaveman
 ----------
 
 A very fast 2D concave hull algorithm [in JavaScript by Vladimir Agafonkin](https://github.com/mapbox/concaveman), wrapped in R (generates a general outline of a point set).
 
-![](README_files/figure-markdown_github/example-1.png)
+``` r
+library(concaveman)
+library(dplyr)
+#> 
+#> Attaching package: 'dplyr'
+#> The following objects are masked from 'package:stats':
+#> 
+#>     filter, lag
+#> The following objects are masked from 'package:base':
+#> 
+#>     intersect, setdiff, setequal, union
+library(purrr)
+library(sf)
+#> Linking to GEOS 3.5.0, GDAL 2.1.0, proj.4 4.9.2
+library(tmap)
+data(points)
+polygons <- map(unique(points$k),
+                       ~ concaveman(points[points$k %in% .,])
+                       ) %>% 
+  map2(unique(points$k), ~ mutate(.x, k = .y)) %>% 
+  reduce(rbind)
+tm_shape(points) +
+ tm_dots(col = "k", size = 0.1, legend.show = FALSE) +
+tm_shape(polygons) +
+ tm_fill(col = "k", alpha = 0.5, legend.show = FALSE) +
+ tm_borders() +
+tm_layout(frame = FALSE)
+```
+
+![](README-example-1.png)
 
 ### Installation
 
@@ -17,50 +46,42 @@ devtools::install_github("joelgombin/concaveman")
 ### Usage
 
 ``` r
+library(concaveman)
+library(dplyr)
+library(purrr)
+library(sf)
+library(tmap)
 data(points)
-points$k <- as.factor(points$k)
-polygons <- concaveman(points, by = k)
-```
-
-    ## Warning in st_sf(x, ..., agr = agr): more than one geometry column: taking
-    ## `polygons'; use `sf_column_name=' to specify a different column.
-
-``` r
+polygons <- concaveman(points)
 polygons
+#> Simple feature collection with 1 feature and 0 fields
+#> Active geometry column: polygons
+#> geometry type:  POLYGON
+#> dimension:      XY
+#> bbox:           xmin: -122.0844 ymin: 37.3696 xmax: -122.0587 ymax: 37.3942
+#> epsg (SRID):    4326
+#> proj4string:    +proj=longlat +datum=WGS84 +no_defs
+#>                         polygons                       geometry
+#> 1 POLYGON((-122.0809 37.3736,... MULTIPOINT(-122.08441 37.38...
+
+polygons2 <- map(unique(points$k),
+                 ~ concaveman(points[points$k %in% .,])
+                 ) %>% 
+  map2(unique(points$k), ~ mutate(.x, k = .y)) %>% 
+  reduce(rbind)
+tm_shape(points) +
+ tm_dots(col = "k", size = 0.1, legend.show = FALSE) +
+tm_shape(polygons2) +
+ tm_fill(col = "k", alpha = 0.5, legend.show = FALSE) +
+ tm_borders() +
+tm_layout(frame = FALSE)
 ```
 
-    ## Simple feature collection with 10 features and 1 field
-    ## Active geometry column: polygons
-    ## geometry type:  POLYGON
-    ## dimension:      XY
-    ## bbox:           xmin: -122.0844 ymin: 37.3802 xmax: -122.0785 ymax: 37.3873
-    ## epsg (SRID):    4326
-    ## proj4string:    +proj=longlat +datum=WGS84 +no_defs
-
-    ## Warning in `st_geometry<-.data.frame`(`*tmp*`, value =
-    ## structure(list(structure(list(: overwriting first sfc column
-
-    ## Warning in st_sf(x): more than one geometry column: taking `polygons'; use
-    ## `sf_column_name=' to specify a different column.
-
-    ## # A tibble: 10 × 3
-    ##         k          polygons          geometry
-    ##    <fctr>  <simple_feature>  <simple_feature>
-    ## 1       1 <POLYGON((-12...> <MULTIPOINT(-...>
-    ## 2       2 <POLYGON((-12...> <MULTIPOINT(-...>
-    ## 3       3 <POLYGON((-12...> <MULTIPOINT(-...>
-    ## 4       4 <POLYGON((-12...> <MULTIPOINT(-...>
-    ## 5       5 <POLYGON((-12...> <MULTIPOINT(-...>
-    ## 6       6 <POLYGON((-12...> <MULTIPOINT(-...>
-    ## 7       7 <POLYGON((-12...> <MULTIPOINT(-...>
-    ## 8       8 <POLYGON((-12...> <MULTIPOINT(-...>
-    ## 9       9 <POLYGON((-12...> <MULTIPOINT(-...>
-    ## 10     10 <POLYGON((-12...> <MULTIPOINT(-...>
+![](README-usage-1.png)
 
 Signature: `concaveman(points, by = NULL, concavity = 2, lengthThreshold = 0)`
 
--   `points` is an `sf` object.
--   `by` is the (unquoted, tidyverse-style) name of the variable defining the subsets of points for which concave hull polygons should be computed. If `NULL` (the default), only one polygon is computed for the whole set of points.
+-   `points` Can be represented as a matrix of coordinates, an `sf` object or a `SpatialPoints*` object.
 -   `concavity` is a relative measure of concavity. 1 results in a relatively detailed shape, Infinity results in a convex hull. You can use values lower than 1, but they can produce pretty crazy shapes.
 -   `length_threshold`: when a segment length is under this threshold, it stops being considered for further detalization. Higher values result in simpler shapes.
 
