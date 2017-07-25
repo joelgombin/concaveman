@@ -1,24 +1,37 @@
 ---
-title: ""
-author: ""
-date: ""
-output: github_document
+output:
+  md_document:
+    variant: markdown_github
 ---
 
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = FALSE)
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "README-"
+)
 ```
 
 ##  concaveman
+
+[![Travis-CI Build Status](https://travis-ci.org/joelgombin/concaveman.svg?branch=master)](https://travis-ci.org/joelgombin/concaveman)
 
 A very fast 2D concave hull algorithm [in JavaScript by Vladimir Agafonkin](https://github.com/mapbox/concaveman), wrapped in R (generates a general outline of a point set).
 
 ```{r example, warning=FALSE}
 library(concaveman)
+library(dplyr)
+library(purrr)
+library(sf)
 library(tmap)
 data(points)
-points$k <- as.factor(points$k)
-polygons <- concaveman(points, by = k)
+polygons <- map(unique(points$k),
+                       ~ concaveman(points[points$k %in% .,])
+                       ) %>% 
+  map2(unique(points$k), ~ mutate(.x, k = .y)) %>% 
+  reduce(rbind)
 tm_shape(points) +
  tm_dots(col = "k", size = 0.1, legend.show = FALSE) +
 tm_shape(polygons) +
@@ -40,17 +53,33 @@ devtools::install_github("joelgombin/concaveman")
 ### Usage
 
 ```{r usage, echo=TRUE}
+library(concaveman)
+library(dplyr)
+library(purrr)
+library(sf)
+library(tmap)
 data(points)
-points$k <- as.factor(points$k)
-polygons <- concaveman(points, by = k)
+polygons <- concaveman(points)
 polygons
+
+polygons2 <- map(unique(points$k),
+                 ~ concaveman(points[points$k %in% .,])
+                 ) %>% 
+  map2(unique(points$k), ~ mutate(.x, k = .y)) %>% 
+  reduce(rbind)
+tm_shape(points) +
+ tm_dots(col = "k", size = 0.1, legend.show = FALSE) +
+tm_shape(polygons2) +
+ tm_fill(col = "k", alpha = 0.5, legend.show = FALSE) +
+ tm_borders() +
+tm_layout(frame = FALSE)
+
 
 ```
 
-Signature: `concaveman(points, by = NULL, concavity = 2, lengthThreshold = 0)`
+Signature: `concaveman(points, concavity = 2, lengthThreshold = 0)`
 
-- `points` is an `sf` object.
-- `by` is the (unquoted, tidyverse-style) name of the variable defining the subsets of points for which concave hull polygons should be computed. If `NULL` (the default), only one polygon is computed for the whole set of points.
+- `points` Can be represented as a matrix of coordinates, an `sf` object or a `SpatialPoints*` object.
 - `concavity` is a relative measure of concavity. 1 results in a relatively detailed shape, Infinity results in a convex hull. You can use values lower than 1, but they can produce pretty crazy shapes.
 - `length_threshold`: when a segment length is under this threshold, it stops being considered for further detalization. Higher values result in simpler shapes.
 
