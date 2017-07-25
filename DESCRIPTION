@@ -24,4 +24,4 @@ RoxygenNote: 6.0.1
 Suggests: testthat,
           sp
 URL: http://www.github.com/joelgombin/concaveman
-Issues: http://www.github.com/joelgombin/concaveman/issues
+BugReports: http://www.github.com/joelgombin/concaveman/issues
