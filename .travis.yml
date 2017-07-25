@@ -11,3 +11,8 @@ cache: packages
 # We use clang, --without-libtool and --with-debug for faster build
 compiler:
   - clang
+
+notifications:
+  email: # stop annoying travis mails
+    on_success: change
+    on_failure: change
