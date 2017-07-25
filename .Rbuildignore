@@ -4,3 +4,4 @@
 ^README\.Rmd$
 ^exemple\.R$
 ^test\.csv$
+^\.travis\.yml$
