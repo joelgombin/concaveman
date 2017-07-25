@@ -35,7 +35,7 @@ This package is a simple R port (through \href{https://github.com/jeroen/v8}{V8}
 The \code{concaveman} function ports the \href{https://github.com/mapbox/concaveman}{concaveman} library from mapbox. It computes the concave polygon for one set of points.
 }
 \details{
-For details regarding the implementation, please see the original javascript library \href{https://github.com/mapbox/concaveman}{github page}. This is just a thin wrapper, via \href{https://cran.r-project.org/web/packages/V8/}{V8}.
+For details regarding the implementation, please see the original javascript library \href{https://github.com/mapbox/concaveman}{github page}. This is just a thin wrapper, via \href{https://cran.r-project.org/package=V8}{V8}.
 }
 \examples{
 data(points)

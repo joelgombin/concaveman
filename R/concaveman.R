@@ -2,7 +2,7 @@
 #'
 #' The `concaveman` function ports the [concaveman](https://github.com/mapbox/concaveman) library from mapbox. It computes the concave polygon for one set of points.
 #'
-#' For details regarding the implementation, please see the original javascript library [github page](https://github.com/mapbox/concaveman). This is just a thin wrapper, via [`V8`](https://cran.r-project.org/web/packages/V8/).
+#' For details regarding the implementation, please see the original javascript library [github page](https://github.com/mapbox/concaveman). This is just a thin wrapper, via [`V8`](https://cran.r-project.org/package=V8).
 #'
 #' @param points the points for which the concave hull must be computed. Can be represented as a matrix of coordinates, an `sf` object or a `SpatialPoints*` object.
 #' @param concavity a relative measure of concavity. 1 results in a relatively detailed shape, Infinity results in a convex hull. You can use values lower than 1, but they can produce pretty crazy shapes.
