@@ -43,7 +43,13 @@ tm_layout(frame = FALSE)
 
 ### Installation
 
-For now, `concaveman` can only be installed from github:
+`concaveman` can be installed from CRAN:
+
+```{r cran, echo = TRUE, eval = FALSE}
+install.packages("concaveman")
+```
+
+You can also install the dev version from github:
 
 
 ```{r install, echo = TRUE, eval = FALSE}

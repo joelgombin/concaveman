@@ -1,7 +1,7 @@
 Package: concaveman
 Type: Package
 Title: A Very Fast 2D Concave Hull Algorithm
-Version: 1.0.0
+Version: 1.0.0.9000
 Authors@R: c(
   person("Joël", "Gombin", email="joel.gombin@gmail.com", role = c("cre", "aut")), 
   person("Ramnath", "Vaidyanathan", role = "aut"),
