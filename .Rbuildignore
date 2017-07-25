@@ -5,3 +5,7 @@
 ^exemple\.R$
 ^test\.csv$
 ^\.travis\.yml$
+^README_files/$
+^README-example-1\.png$
+^README-usage-1\.png$
+^README_files$
