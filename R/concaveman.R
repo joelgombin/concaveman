@@ -45,7 +45,7 @@ concaveman.matrix <- function(points, concavity = 2, length_threshold = 0) {
 concaveman.sf <- function(points, concavity = 2, length_threshold = 0) {
 
   points %>%
-    summarise(polygons =
+    dplyr::summarise(polygons =
                 concaveman(sf::st_coordinates(.), concavity, length_threshold) %>%
                   as.matrix() %>%
                   list %>%
