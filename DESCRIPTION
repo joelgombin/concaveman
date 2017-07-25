@@ -21,4 +21,5 @@ Imports: V8,
          methods,
          dplyr
 RoxygenNote: 6.0.1
-Suggests: testthat
+Suggests: testthat,
+          sp
