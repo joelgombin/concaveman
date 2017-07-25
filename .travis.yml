@@ -3,7 +3,7 @@
 language: R
 sudo: required
 before_install:
-  - sudo add-apt-repository ppa:ubuntugis/ubuntugis-stable -y
+  - sudo add-apt-repository ppa:ubuntugis/ppa -y
   - sudo apt-get update -q
   - sudo apt-get install -y libudunits2-dev libv8-3.14-dev libgdal-dev libgeos-dev libproj-dev libudunits2-dev liblwgeom-dev
 cache: packages
