@@ -3,6 +3,7 @@
 language: R
 sudo: required
 before_install:
-  - sudo apt-get install libudunits2-dev libv8-3.14-dev
+  - sudo apt-get -qq update
+  - sudo apt-get install -y libudunits2-dev libv8-3.14-dev
 cache: packages
 
