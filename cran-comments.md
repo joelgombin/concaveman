@@ -1,3 +1,9 @@
+## Resubmission
+This is a resubmission. In this version I have:
+
+* corrected the use of backticks and quotes for functions and software nawes in DESCRIPTION.
+
+
 ## Test environments
 * local Ubuntu 16.04 install, R 3.4.1
 * ubuntu 14.04.5 (on travis-ci), R 3.4.0

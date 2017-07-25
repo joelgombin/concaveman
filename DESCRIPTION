@@ -8,7 +8,7 @@ Authors@R: c(
   person("Vladimir", "Agafonkin", role = "aut"),
   person("Mapbox", role = "cph")
   )
-Description: The `concaveman` function ports the concaveman (<https://github.com/mapbox/concaveman>) library from mapbox. It computes the concave polygon(s) for one or several set of points.
+Description: The concaveman function ports the 'concaveman' (<https://github.com/mapbox/concaveman>) library from 'mapbox'. It computes the concave polygon(s) for one or several set of points.
 License: GPL-3
 Encoding: UTF-8
 LazyData: true
