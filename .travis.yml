@@ -1,6 +1,8 @@
 # R for travis: see documentation at https://docs.travis-ci.com/user/languages/r
 
 language: R
-sudo: false
+sudo: required
+before_install:
+  - sudo apt-get install libudunits2-dev libv8-3.14-dev
 cache: packages
 
