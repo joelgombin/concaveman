@@ -4,11 +4,11 @@
 #'
 #' For details regarding the implementation, please see the original javascript library [github page](https://github.com/mapbox/concaveman). This is just a thin wrapper, via [`V8`](https://cran.r-project.org/package=V8).
 #'
-#' @param points the points for which the concave hull must be computed. Can be represented as a matrix of coordinates, an `sf` object or a `SpatialPoints*` object.
+#' @param points the points for which the concave hull must be computed. Can be represented as a matrix of coordinates or an `sf` object.
 #' @param concavity a relative measure of concavity. 1 results in a relatively detailed shape, Infinity results in a convex hull. You can use values lower than 1, but they can produce pretty crazy shapes.
 #' @param length_threshold when a segment length is under this threshold, it stops being considered for further detalization. Higher values result in simpler shapes.
 #'
-#' @return an object of the same class as `points`: a matrix of coordinates, an `sf` object or a `SpatialPoints*` object.
+#' @return an object of the same class as `points`: a matrix of coordinates or an `sf` object.
 #' @examples
 #' data(points)
 #' polygons <- concaveman(points)
@@ -51,13 +51,9 @@ concaveman.sf <- function(points, concavity = 2, length_threshold = 0) {
                   list %>%
                   sf::st_polygon() %>%
                   sf::st_sfc(crs = sf::st_crs(points))
-              )
+              ) %>%
+    sf::st_drop_geometry() %>%
+    dplyr::rename(geometry = polygons) %>%
+    sf::st_set_geometry("geometry")
 }
 
-#' @export
-#' @importFrom methods as
-#' @rdname concaveman
-concaveman.SpatialPoints <- function(points, concavity = 2, length_threshold = 0) {
-  points <- sf::st_as_sf(points)
-  as(concaveman(points, concavity, length_threshold), "Spatial")
-}
