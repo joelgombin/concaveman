@@ -16,8 +16,10 @@ knitr::opts_chunk$set(
 
 ##  concaveman
 
-[![Travis-CI Build Status](https://travis-ci.org/joelgombin/concaveman.svg?branch=master)](https://travis-ci.org/joelgombin/concaveman)
-
+<!-- badges: start -->
+[![R build status](https://github.com/joelgombin/concaveman/workflows/R-CMD-check/badge.svg)](https://github.com/joelgombin/concaveman/actions)
+<!-- badges: end -->
+  
 A very fast 2D concave hull algorithm [in JavaScript by Vladimir Agafonkin](https://github.com/mapbox/concaveman), wrapped in R (generates a general outline of a point set).
 
 ```{r example, warning=FALSE}
