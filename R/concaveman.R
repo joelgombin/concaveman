@@ -51,9 +51,6 @@ concaveman.sf <- function(points, concavity = 2, length_threshold = 0) {
                   list %>%
                   sf::st_polygon() %>%
                   sf::st_sfc(crs = sf::st_crs(points))
-              ) %>%
-    sf::st_drop_geometry() %>%
-    dplyr::rename(geometry = polygons) %>%
-    sf::st_set_geometry("geometry")
+              )
 }
 

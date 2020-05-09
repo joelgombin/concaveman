@@ -20,7 +20,7 @@ Imports: V8,
          jsonlite,
          methods,
          dplyr
-RoxygenNote: 7.0.1
+RoxygenNote: 7.1.0
 Suggests: testthat
 URL: http://www.github.com/joelgombin/concaveman
 BugReports: http://www.github.com/joelgombin/concaveman/issues

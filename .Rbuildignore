@@ -11,3 +11,4 @@
 ^README_files$
 ^README\.md$
 ^cran-comments\.md$
+revdep/*
