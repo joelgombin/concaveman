@@ -19,3 +19,4 @@ revdep/*
 ^pkgdown$
 exemple.R
 test.csv
+^CRAN-RELEASE$
