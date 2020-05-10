@@ -12,15 +12,18 @@ Description: The concaveman function ports the 'concaveman' (<https://github.com
 License: GPL-3
 Encoding: UTF-8
 LazyData: true
+NeedsCompilation: yes
 Roxygen: list(markdown = TRUE)
 Depends: R (>= 2.10)
-Imports: V8, 
+Imports: V8,
          sf, 
          magrittr,
          jsonlite,
-         dplyr
+         dplyr,
+         Rcpp
 RoxygenNote: 7.1.0
 Suggests: testthat
+LinkingTo: Rcpp
 URL: https://joelgombin.github.io/concaveman, http://www.github.com/joelgombin/concaveman
 BugReports: http://www.github.com/joelgombin/concaveman/issues
-SystemRequirements: GDAL (>= 2.0.0), GEOS (>= 3.3.0), PROJ.4 (>= 4.8.0)
+SystemRequirements: C++11, GDAL (>= 2.0.0), GEOS (>= 3.3.0), PROJ.4 (>= 4.8.0)
