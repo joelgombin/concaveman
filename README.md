@@ -1,7 +1,6 @@
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-concaveman
-----------
+## concaveman
 
 <!-- badges: start -->
 
@@ -42,7 +41,7 @@ tm_shape(polygons) +
 tm_layout(frame = FALSE)
 ```
 
-![](README-example-1.png)
+![](./man/figures/example-1.png)<!-- -->
 
 ### Installation
 
@@ -93,26 +92,26 @@ tm_layout(frame = FALSE)
 #> Warning: The shape polygons2 is invalid. See sf::st_is_valid
 ```
 
-![](README-usage-1.png)
+![](./man/figures/usage-1.png)<!-- -->
 
 Signature: `concaveman(points, concavity = 2, lengthThreshold = 0)`
 
--   `points` Can be represented as a matrix of coordinates or an `sf`
+  - `points` Can be represented as a matrix of coordinates or an `sf`
     object.
--   `concavity` is a relative measure of concavity. 1 results in a
+  - `concavity` is a relative measure of concavity. 1 results in a
     relatively detailed shape, Infinity results in a convex hull. You
     can use values lower than 1, but they can produce pretty crazy
     shapes.
--   `length_threshold`: when a segment length is under this threshold,
+  - `length_threshold`: when a segment length is under this threshold,
     it stops being considered for further detalization. Higher values
     result in simpler shapes.
 
 ### Algorithm
 
 The algorithm is based on ideas from the paper [A New Concave Hull
-Algorithm and Concaveness Measure for n-dimensional Datasets,
-2012](http://www.iis.sinica.edu.tw/page/jise/2012/201205_10.pdf) by
-Jin-Seo Park and Se-Jong Oh.
+Algorithm and Concaveness Measure for n-dimensional
+Datasets, 2012](http://www.iis.sinica.edu.tw/page/jise/2012/201205_10.pdf)
+by Jin-Seo Park and Se-Jong Oh.
 
 This implementation by Vladimir Agafonkin dramatically improves
 performance over the one stated in the paper (`O(rn)`, where `r` is a
