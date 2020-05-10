@@ -41,7 +41,7 @@ tm_shape(polygons) +
 tm_layout(frame = FALSE)
 ```
 
-![](./man/figures/example-1.png)<!-- -->
+![](man/figures/README-example-1.png)<!-- -->
 
 ### Installation
 
@@ -92,7 +92,7 @@ tm_layout(frame = FALSE)
 #> Warning: The shape polygons2 is invalid. See sf::st_is_valid
 ```
 
-![](./man/figures/usage-1.png)<!-- -->
+![](man/figures/README-usage-1.png)<!-- -->
 
 Signature: `concaveman(points, concavity = 2, lengthThreshold = 0)`
 
