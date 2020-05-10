@@ -18,7 +18,6 @@ Imports: V8,
          sf, 
          magrittr,
          jsonlite,
-         methods,
          dplyr
 RoxygenNote: 7.1.0
 Suggests: testthat
