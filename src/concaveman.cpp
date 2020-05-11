@@ -1,6 +1,5 @@
+#include "concaveman-src.h"
 #include "concaveman.h"
-
-#include "Rcpp.h"
 
 //' rcpp_concaveman_mat
 //' @noRd 
