@@ -61,6 +61,5 @@ concaveman.sf <- function(points, concavity = 2, length_threshold = 0) {
 concaveman_rcpp <- function (xy, concavity = 2, length_threshold = 0) {
     index <- grDevices::chull (xy)
     index <- c (index, index [1])
-    #concavity <- 1 / max (concavity, 1e-6)
-    rcpp_concaveman (xy, index - 1, concavity, length_threshold)
+    rcpp_concaveman_mat (xy, index - 1, concavity, length_threshold)
 }

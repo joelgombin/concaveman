@@ -2,10 +2,10 @@
 
 #include "Rcpp.h"
 
-//' rcpp_concaveman
+//' rcpp_concaveman_mat
 //' @noRd 
 // [[Rcpp::export]]
-Rcpp::DataFrame rcpp_concaveman (Rcpp::NumericMatrix xy, Rcpp::IntegerVector hull_in,
+Rcpp::DataFrame rcpp_concaveman_mat (Rcpp::NumericMatrix xy, Rcpp::IntegerVector hull_in,
         const double concavity, const double length_threshold)
 {
     const size_t num_points = static_cast <int> (xy.nrow ());

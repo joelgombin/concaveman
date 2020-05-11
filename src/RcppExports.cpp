@@ -6,9 +6,9 @@
 
 using namespace Rcpp;
 
-// rcpp_concaveman
-Rcpp::DataFrame rcpp_concaveman(Rcpp::NumericMatrix xy, Rcpp::IntegerVector hull_in, const double concavity, const double length_threshold);
-RcppExport SEXP _concaveman_rcpp_concaveman(SEXP xySEXP, SEXP hull_inSEXP, SEXP concavitySEXP, SEXP length_thresholdSEXP) {
+// rcpp_concaveman_mat
+Rcpp::DataFrame rcpp_concaveman_mat(Rcpp::NumericMatrix xy, Rcpp::IntegerVector hull_in, const double concavity, const double length_threshold);
+RcppExport SEXP _concaveman_rcpp_concaveman_mat(SEXP xySEXP, SEXP hull_inSEXP, SEXP concavitySEXP, SEXP length_thresholdSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -16,13 +16,13 @@ BEGIN_RCPP
     Rcpp::traits::input_parameter< Rcpp::IntegerVector >::type hull_in(hull_inSEXP);
     Rcpp::traits::input_parameter< const double >::type concavity(concavitySEXP);
     Rcpp::traits::input_parameter< const double >::type length_threshold(length_thresholdSEXP);
-    rcpp_result_gen = Rcpp::wrap(rcpp_concaveman(xy, hull_in, concavity, length_threshold));
+    rcpp_result_gen = Rcpp::wrap(rcpp_concaveman_mat(xy, hull_in, concavity, length_threshold));
     return rcpp_result_gen;
 END_RCPP
 }
 
 static const R_CallMethodDef CallEntries[] = {
-    {"_concaveman_rcpp_concaveman", (DL_FUNC) &_concaveman_rcpp_concaveman, 4},
+    {"_concaveman_rcpp_concaveman_mat", (DL_FUNC) &_concaveman_rcpp_concaveman_mat, 4},
     {NULL, NULL, 0}
 };
 
