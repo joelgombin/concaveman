@@ -1,5 +1,7 @@
 #include "concaveman.h"
 
+#include "Rcpp.h"
+
 //' rcpp_concaveman
 //' @noRd 
 // [[Rcpp::export]]
@@ -18,7 +20,7 @@ Rcpp::DataFrame rcpp_concaveman (Rcpp::NumericMatrix xy, Rcpp::IntegerVector hul
 
     std::vector <int> hull = Rcpp::as <std::vector <int> > (hull_in);
 
-    auto concave_points = concaveman <T, 16> (points, hull,
+    auto concave_points = concaveman::concaveman <T, 16> (points, hull,
             concavity, length_threshold);
 
     Rcpp::NumericVector xout (concave_points.size ()),
