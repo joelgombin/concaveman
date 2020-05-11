@@ -4,6 +4,6 @@
 #' rcpp_concaveman
 #' @noRd 
 rcpp_concaveman <- function(xy, hull_in, concavity, length_threshold) {
-    .Call('_concaveman_rcpp_concaveman', PACKAGE = 'concaveman', xy, hull_in, concavity, length_threshold)
+    .Call(`_concaveman_rcpp_concaveman`, xy, hull_in, concavity, length_threshold)
 }
 
