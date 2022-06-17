@@ -6,6 +6,7 @@ context("main tests")
 test_that("input and output formats works correctly", {
   expect_is(concaveman(sf::st_coordinates(points)), "matrix")
   expect_s3_class(concaveman(points), "sf")
+  expect_s3_class(concaveman(sf::st_geometry(points)), "sfc")
   # input from classes that don't inherit from matrix, sf or SpatialPoints should throw an error
   expect_error(concaveman(array()))
 })

@@ -16,10 +16,8 @@ Roxygen: list(markdown = TRUE)
 Depends: R (>= 2.10)
 Imports: V8, 
          sf, 
-         magrittr,
-         jsonlite,
-         dplyr
-RoxygenNote: 7.1.0
+         jsonlite
+RoxygenNote: 7.1.2
 Suggests: testthat
 URL: https://joelgombin.github.io/concaveman/, http://www.github.com/joelgombin/concaveman/
 BugReports: http://www.github.com/joelgombin/concaveman/issues
