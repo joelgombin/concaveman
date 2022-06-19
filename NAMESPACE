@@ -2,5 +2,6 @@
 
 S3method(concaveman,matrix)
 S3method(concaveman,sf)
+S3method(concaveman,sfc)
 export(concaveman)
 importFrom(magrittr,"%>%")

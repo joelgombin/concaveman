@@ -43,14 +43,32 @@ concaveman.matrix <- function(points, concavity = 2, length_threshold = 0) {
 #' @export
 #' @rdname concaveman
 concaveman.sf <- function(points, concavity = 2, length_threshold = 0) {
+  
+  crs <- sf::st_crs(points)
+  coords <- sf::st_coordinates(points)
+  res <- sf::st_cast(
+    sf::st_linestring(
+      concaveman(coords, concavity, length_threshold)
+      ), 
+    "POLYGON"
+    )
+  
+  sf::st_as_sf(sf::st_sfc(res), crs = crs)
+}
 
-  points %>%
-    dplyr::summarise(polygons =
-                concaveman(sf::st_coordinates(.), concavity, length_threshold) %>%
-                  as.matrix() %>%
-                  list %>%
-                  sf::st_polygon() %>%
-                  sf::st_sfc(crs = sf::st_crs(points))
-              )
+#' @export
+#' @rdname concaveman
+concaveman.sfc <- function(points, concavity = 2, length_threshold = 0) {
+  
+  crs <- sf::st_crs(points)
+  coords <- sf::st_coordinates(points)
+  res <- sf::st_cast(
+    sf::st_linestring(
+      concaveman(coords, concavity, length_threshold)
+    ), 
+    "POLYGON"
+  )
+  
+  sf::st_sfc(res, crs = crs)
 }
 

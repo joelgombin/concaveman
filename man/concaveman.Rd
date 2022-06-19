@@ -5,6 +5,7 @@
 \alias{concaveman}
 \alias{concaveman.matrix}
 \alias{concaveman.sf}
+\alias{concaveman.sfc}
 \title{concaveman: A very fast 2D concave hull algorithm.}
 \usage{
 concaveman(points, concavity, length_threshold)
@@ -12,6 +13,8 @@ concaveman(points, concavity, length_threshold)
 \method{concaveman}{matrix}(points, concavity = 2, length_threshold = 0)
 
 \method{concaveman}{sf}(points, concavity = 2, length_threshold = 0)
+
+\method{concaveman}{sfc}(points, concavity = 2, length_threshold = 0)
 }
 \arguments{
 \item{points}{the points for which the concave hull must be computed. Can be represented as a matrix of coordinates or an \code{sf} object.}
