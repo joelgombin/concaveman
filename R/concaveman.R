@@ -16,7 +16,7 @@
 #' plot(polygons, add = TRUE)
 #'
 #' @export
-#' @importFrom magrittr "%>%"
+
 
 concaveman <- function(points, concavity, length_threshold) UseMethod("concaveman", points)
 
