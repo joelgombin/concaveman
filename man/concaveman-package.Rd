@@ -11,8 +11,8 @@ This package is a simple R port (through \href{https://github.com/jeroen/v8}{\co
 Useful links:
 \itemize{
   \item \url{https://joelgombin.github.io/concaveman/}
-  \item \url{http://www.github.com/joelgombin/concaveman/}
-  \item Report bugs at \url{http://www.github.com/joelgombin/concaveman/issues}
+  \item \url{https://www.github.com/joelgombin/concaveman/}
+  \item Report bugs at \url{https://www.github.com/joelgombin/concaveman/issues}
 }
 
 }
