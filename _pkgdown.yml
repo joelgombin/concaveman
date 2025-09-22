@@ -1,1 +1,4 @@
-url: https://joelgombin.github.io/concaveman
+url: https://joelgombin.github.io/concaveman/
+template:
+  bootstrap: 5
+
