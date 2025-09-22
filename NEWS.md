@@ -1,3 +1,6 @@
+# concaveman 1.2.0
+- got rid of `dplyr` and `magrittr` dependencies (thanks @josiahparry)
+
 # concaveman 1.1.0
 
 - Support for the `SpatialPoint` classes has been removed. It is now advised to transform data to and from `sf` format outside of the `concaveman` function.
