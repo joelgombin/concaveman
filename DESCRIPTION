@@ -1,7 +1,7 @@
 Package: concaveman
 Type: Package
 Title: A Very Fast 2D Concave Hull Algorithm
-Version: 1.1.0
+Version: 1.2.0
 Authors@R: c(
   person("Joël", "Gombin", email="joel.gombin@gmail.com", role = c("cre", "aut")), 
   person("Ramnath", "Vaidyanathan", role = "aut"),
@@ -17,7 +17,7 @@ Depends: R (>= 2.10)
 Imports: V8, 
          sf, 
          jsonlite
-RoxygenNote: 7.1.2
+RoxygenNote: 7.3.3
 Suggests: testthat
 URL: https://joelgombin.github.io/concaveman/, http://www.github.com/joelgombin/concaveman/
 BugReports: http://www.github.com/joelgombin/concaveman/issues
