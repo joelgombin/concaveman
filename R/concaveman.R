@@ -43,32 +43,35 @@ concaveman.matrix <- function(points, concavity = 2, length_threshold = 0) {
 #' @export
 #' @rdname concaveman
 concaveman.sf <- function(points, concavity = 2, length_threshold = 0) {
-  
+
   crs <- sf::st_crs(points)
   coords <- sf::st_coordinates(points)
   res <- sf::st_cast(
     sf::st_linestring(
       concaveman(coords, concavity, length_threshold)
-      ), 
+      ),
     "POLYGON"
     )
-  
-  sf::st_as_sf(sf::st_sfc(res), crs = crs)
+
+  res <- sf::st_as_sf(sf::st_sfc(res), crs = crs)
+  # to be backward compatible with previous tidyverse implementation
+  sf::st_geometry(res) <- "polygons"
+  return(res)
 }
 
 #' @export
 #' @rdname concaveman
 concaveman.sfc <- function(points, concavity = 2, length_threshold = 0) {
-  
+
   crs <- sf::st_crs(points)
   coords <- sf::st_coordinates(points)
   res <- sf::st_cast(
     sf::st_linestring(
       concaveman(coords, concavity, length_threshold)
-    ), 
+    ),
     "POLYGON"
   )
-  
+
   sf::st_sfc(res, crs = crs)
 }
 
