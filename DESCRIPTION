@@ -19,6 +19,6 @@ Imports: V8,
          jsonlite
 RoxygenNote: 7.3.3
 Suggests: testthat
-URL: https://joelgombin.github.io/concaveman/, https://www.github.com/joelgombin/concaveman/
-BugReports: https://www.github.com/joelgombin/concaveman/issues
+URL: https://joelgombin.github.io/concaveman/, https://github.com/joelgombin/concaveman/
+BugReports: https://github.com/joelgombin/concaveman/issues
 SystemRequirements: GDAL (>= 2.0.0), GEOS (>= 3.3.0), PROJ.4 (>= 4.8.0)
