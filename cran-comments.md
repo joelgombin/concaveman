@@ -1,23 +1,18 @@
 ## Test environments
-* local R installation (Ubuntu 20.04), R 4.0.0
-* Github Actions, macOS-latest, R 4.0.0
-* Github Actions, window-latest, R 4.0.0
-* Github Actions, Ubuntu 16.04, R 4.0.0
-* Github Actions, Ubuntu 16.04, R 3.6.0
-* Github Actions, Ubuntu 16.04, R 3.5.0
-* Github Actions, Ubuntu 16.04, R 3.4.0
-* Github Actions, Ubuntu 16.04, R 3.3.0
+* local R installation (MacOS 15.6.1), R 4.5.1
+* Github Actions, macOS-latest, R 4.5.1
+* Github Actions, window-latest, R 4.5.1
+* Github Actions, Ubuntu 24.04.3, R 4.5.1
+* Github Actions, Ubuntu 24.04.3, R 4.4.3
+* Github Actions, ubuntu 24.04.3, R devel
 
-mac-OS latest with R-devel fails in Github Actions, but I believe that this is because no binary version of sf is available for it. 
-
-Please note that, due to dependency conflicts for `sf` 0.9, testing may fail in some environments. It is in particular the case for rhub, which does not allow to use the ubuntugis-unstable PPA necessary to get the necessary versions of GDAL, GEOS and PROJ4 for sf 0.9. This is why I favored Github Actions. 
 
 ## R CMD check results
 
 0 errors | 0 warnings | 0 note
 
-* This is a new release.
+* This is an update.
 
 ## Downstream dependencies
 
-I ran `revdepcheck::revdep_check()`. There is no problem with the downstream dependencies.
+I ran `revdepcheck::revdep_check()`. Problems with the downstream dependencies have been fixed on my side, there are no problems anymore. 
