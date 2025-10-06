@@ -15,4 +15,4 @@
 
 ## Downstream dependencies
 
-I ran `revdepcheck::revdep_check()`. Problems with the downstream dependencies have been fixed on my side, there are no problems anymore. 
+I ran `revdepcheck::revdep_check()`. Problems with the downstream dependencies (including `spNetwork`) have been fixed on my side, there are no problems anymore. 
